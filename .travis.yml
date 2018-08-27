@@ -1,7 +1,6 @@
 sudo: required
 
-services:
-  - docker
+language: generic
 
 # safelist
 branches:
@@ -19,5 +18,4 @@ install:
   - docker ps
 
 after_script:
-  - docker ps
   - docker-compose down
