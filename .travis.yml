@@ -1,3 +1,10 @@
+sudo: required
+
+language: nodejs
+
+services:
+  - docker
+
 # safelist
 branches:
   only:
