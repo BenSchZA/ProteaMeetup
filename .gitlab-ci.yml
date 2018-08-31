@@ -1,0 +1,18 @@
+image: docker:latest
+
+services:
+  - docker:dind
+  
+# Install docker-compose
+before_script:
+  - apk add --no-cache py-pip
+  - pip install docker-compose
+
+# Build master branch
+build:
+  only:
+    - master
+  script:
+    - docker-compose -v
+    - docker-compose build
+    - docker-compose up -d
