@@ -146,7 +146,7 @@ export class UportService {
       this.uport.requestCredentials(req).then((credentials: ICredentials) => {
         const user = new ProteaUser(this._user.getValue());
         user.MNID = credentials.networkAddress;
-        user.avatar = credentials.avatar.uri;
+        user.avatar = credentials.avatar ? credentials.avatar.uri : '';
         user.address = this.decodeMNID(credentials.networkAddress);
         user.name = credentials.name;
         user.phone = credentials.phone;
