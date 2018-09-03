@@ -1,6 +1,9 @@
 # Use LTS Node environment as build environment
 FROM node:carbon AS builder
 
+ARG NETWORK
+ENV NETWORK ${NETWORK}
+
 # Initialize working directory
 RUN mkdir -p /build
 WORKDIR /build
@@ -16,8 +19,9 @@ RUN yarn install
 
 # Build application
 RUN truffle compile
-#RUN truffle migrate --network development
 RUN yarn run build
+
+CMD truffle migrate --network ${NETWORK}
 
 # Use Nginx server to serve 'dist' directory
 FROM nginx:alpine

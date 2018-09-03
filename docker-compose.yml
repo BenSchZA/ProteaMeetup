@@ -1,6 +1,19 @@
-version: '2'
+version: '3'
 services:
-  web:
-    build: .
+  protea:
+    image: protea:latest
+    build:
+      context: .
+      args:
+        - NETWORK=development
     ports:
       - 3000:80
+    depends_on:
+      - ganache
+  ganache:
+    image: ganache:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.Ganache
+    ports:
+      - 7545:7545
