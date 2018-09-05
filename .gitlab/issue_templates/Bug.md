@@ -1,12 +1,8 @@
-## Prerequisites
+## Description
 
-e.g. Did you read the Wiki?
+[Description of the bug]
 
-## Description:
-
-[Description of the bug or feature]
-
-## Steps to Reproduce:
+## Steps to Reproduce
 
 1. [First step]
 2. [Second step]
@@ -15,4 +11,12 @@ e.g. Did you read the Wiki?
 
 *Actual behaviour:* [What actually happened]
 
-## Acceptance Criteria/Definition of Done:
+## Acceptance Criteria/Definition of Done
+
+* [ ]  Criteria 1
+* [ ]  Criteria 2
+* [ ]  Criteria 3
+
+## Notes
+
+[e.g. blockers, prior research, etc.]
