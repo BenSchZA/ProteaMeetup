@@ -1,29 +1,36 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: _APP_NAME_
+  name: proteameetup
+  labels:
+    app: proteameetup
 spec:
-  replicas: 2
+  replicas: 1
+  selector:
+    matchLabels:
+      app: proteameetup
+  
+  # Pod template
   template:
     metadata:
       labels:
-        app: _APP_NAME_
+        app: proteameetup
     spec:
       containers:
-      - name: _APP_NAME_
-        image: registry.gitlab.com/linumlabs/proteameetup:_VERSION_
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 3000
+        - name: test
+          image: registry.gitlab.com/linumlabs/proteameetup/protea:_TAG_
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
       imagePullSecrets:
         - name: gitlab-registry
 ---
-apiVersion: v1beta1
+apiVersion: v1
 kind: Service
 metadata:
-  name: _APP_NAME_
+  name: proteameetup
   labels:
-    app: _APP_NAME_
+    app: proteameetup
 spec:
   type: LoadBalancer
   ports:
@@ -32,4 +39,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    app: _APP_NAME_
+    app: proteameetup
